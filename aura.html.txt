@@ -1,0 +1,137 @@
+!DOCTYPE html
+html lang=en
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    titleAura Solanatitle
+    style
+        body {
+            margin 0;
+            padding 0;
+            font-family Arial, sans-serif;
+            background-color #121212;
+            color #ffffff;
+            display flex;
+            flex-direction column;
+            align-items center;
+            height 100vh;
+        }
+        .dashboard {
+            width 100%;
+            display flex;
+            justify-content space-between;
+            align-items center;
+            padding 20px;
+            background-color #1c1c1c;
+            box-shadow 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dashboard .buttons {
+            display flex;
+            gap 10px;
+        }
+        .dashboard button {
+            background-color #333333;
+            color white;
+            border 1px solid #555555;  Reduced border width 
+            padding 10px 20px;
+            font-size 14px;
+            cursor pointer;
+            border-radius 5px;
+            transition background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .dashboard buttonhover {
+            background-color #555555;
+            border-color #777777;
+        }
+        .container {
+            text-align center;
+            flex 1;
+            display flex;
+            flex-direction column;
+            justify-content center;
+            align-items center;
+        }
+        .button {
+            background-color #1db954;
+            color white;
+            border none;
+            padding 15px 30px;
+            text-align center;
+            text-decoration none;
+            display inline-block;
+            font-size 16px;
+            margin 10px;
+            cursor pointer;
+            border-radius 25px;
+            transition background-color 0.3s ease;
+        }
+        .buttonhover {
+            background-color #1ed760;
+        }
+        .center-image {
+            width 40%;
+            margin 20px 0;
+        }
+        h1 {
+            font-size 2.5em;  Slightly bigger font size 
+            font-weight bold;  Bold text 
+            margin 0;
+        }
+    style
+head
+body
+    div class=dashboard
+        div class=buttons
+            buttonPortfoliobutton
+            buttonTradebutton
+            buttonActivitybutton
+            buttonBuySell Cryptobutton
+            buttonINRbutton
+            buttonUSDCbutton
+            buttonGift Cardsbutton
+        div
+        button class=button id=connect-walletConnect Walletbutton
+    div
+
+    div class=container
+        h1Aura Solanah1
+        img src=cUsersshrey7n5vb6 (5)Designer.jpeg alt=Center Image class=center-image
+        p id=wallet-addressConnect your wallet to get started.p
+        button class=button id=initialize style=displaynone;Initializebutton
+    div
+
+    script src=httpsunpkg.com@solanaweb3.js@latestlibindex.iife.min.jsscript
+    script
+        const connectWalletButton = document.getElementById('connect-wallet');
+        const initializeButton = document.getElementById('initialize');
+        const walletAddressDisplay = document.getElementById('wallet-address');
+        
+        const { solana } = window;
+
+        const connectWallet = async () = {
+            if (solana) {
+                try {
+                    const response = await solana.connect();
+                    const walletAddress = response.publicKey.toString();
+                    walletAddressDisplay.textContent = `Wallet Address ${walletAddress}`;
+                    connectWalletButton.style.display = 'none';
+                    initializeButton.style.display = 'inline-block';
+                } catch (error) {
+                    console.error(error);
+                }
+            } else {
+                alert('Solana object not found! Get a Phantom Wallet 👻');
+            }
+        };
+
+        connectWalletButton.addEventListener('click', connectWallet);
+
+        const initialize = async () = {
+             Your initialize logic here
+            alert('Initialize function called!');
+        };
+
+        initializeButton.addEventListener('click', initialize);
+    script
+body
+html
